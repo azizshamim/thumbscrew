@@ -1,0 +1,12 @@
+#!/bin/bash
+
+NAME=${1}
+
+GTL=`git rev-parse --show-toplevel`
+[ -d "${GTL}/.keynote" ] && mkdir "${GTL}/.keynote"
+
+TMP=$(mktemp)
+${TMP}<&0
+/usr/bin/osascript thumbscrew.scpt ${GTL} ${TMP} ${NAME}
+
+cat ${TMP}
