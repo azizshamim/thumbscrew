@@ -51,5 +51,4 @@ on run argv
 
     close front document without saving
   end tell
-  return POSIX path of gitRoot
 end run
