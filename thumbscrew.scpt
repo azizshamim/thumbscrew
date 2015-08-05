@@ -1,5 +1,5 @@
 -- thumbscrew.scpt
--- usage: thumbscript.scpt <path_to_root_dir> <path_to_keynotePresentation> <presentation_name>
+-- usage: thumbscript.scpt <path_to_root_dir> <path_to_keynotePresentation>
 --
 -- Will create scaled thumbnails of length `thumbSize` in the directory
 -- <path_to_root_dir>/.keynote/<presentation>
@@ -13,7 +13,7 @@ end getImages
 on run argv
   set gitRoot to item 1 of argv
   set tmpFile to item 2 of argv
-  set documentName to item 3 of argv
+  set documentName to item 2 of argv
   if documentName ends with ".key" then set documentName to text 1 thru -5 of documentName
 
   set gitRoot to posix file (POSIX path of (gitRoot as text) & "/" & thumbnailDir) as alias

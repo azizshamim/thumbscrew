@@ -5,8 +5,5 @@ NAME=${1}
 GTL=`git rev-parse --show-toplevel`
 [ -d "${GTL}/keynotes" ] || mkdir "${GTL}/keynotes"
 
-TMP=$(mktemp -t 'tb')
-${TMP}<&0
-/usr/bin/osascript thumbscrew.scpt ${GTL} ${TMP} ${NAME}
-
-cat ${TMP}
+/usr/bin/osascript thumbscrew.scpt ${GTL} ${NAME}
+cat -
