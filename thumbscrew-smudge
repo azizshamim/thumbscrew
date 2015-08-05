@@ -3,7 +3,7 @@
 NAME=${1}
 
 GTL=`git rev-parse --show-toplevel`
-[ -d "${GTL}/.keynote" ] && mkdir "${GTL}/.keynote"
+[ -d "${GTL}/keynotes" ] && mkdir "${GTL}/keynotes"
 
 TMP=$(mktemp)
 ${TMP}<&0
