@@ -9,7 +9,7 @@ Works by adding thumbnails to a per-presentation directory so that diffs in the 
 
 ```
 [filter "thumbscrew"]
-  smudge = smudge %f
+  clean = thumbscrew-clean %f
 ```
 
 * Make sure that the `thumbscrew-smudge` script is available in `PATH`
