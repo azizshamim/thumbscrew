@@ -1,0 +1,3 @@
+[filter "thumbscrew"]
+	clean = thumbscrew-clean %f
+	required
