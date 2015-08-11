@@ -2,7 +2,7 @@
 -- usage: thumbscript.scpt <path_to_root_dir> <path_to_keynotePresentation>
 --
 -- Will create scaled thumbnails of length `thumbSize` in the directory
--- <path_to_root_dir>/.keynote/<presentation>
+-- <path_to_root_dir>/<thumbnailDir>/<presentation>
 property thumbSize : 480
 property thumbnailDir: "keynotes"
 
