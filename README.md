@@ -1,7 +1,14 @@
 ##thumbscrew
 A git clean filter to help work with Keynote files in git.
 
-Works by adding thumbnails to a per-presentation directory so that diffs in the Keynote binary are *visible* in some way (*i.e. as diffs of the thumbnails*).
+*"Works"* by adding thumbnails to a per-presentation directory so that diffs in the Keynote binary are *visible* in some way (*i.e. as diffs of the thumbnails*).
+
+**TODO:**
+* [ ] Installer would be nice
+* [ ] `git thumbscrew` command option *a la* [git-lfs](https://github.com/github/git-lfs)
+* [ ] single commit?
+* [ ] License
+* [ ] CONTRIBUTING.md
 
 ### Installation
 
