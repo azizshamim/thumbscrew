@@ -19,19 +19,19 @@ on run argv
   set gitRoot to posix file (POSIX path of (gitRoot as text) & "/" & thumbnailDir) as alias
   set tmpFile to (POSIX file tmpFile) as alias
 
+  tell application "Finder"
+    if not (exists folder documentName of folder gitRoot)
+      make new folder at gitRoot with properties {name:documentName}
+    end if
+    set the targetFolder to folder documentName of folder gitRoot
+    set the targetFolderHFSPath to targetFolder as string
+  end tell
+
+  tell application "Keynote" to run
   tell application "Keynote"
-    activate
     open tmpFile
 
     if playing is true then stop the front document
-
-    tell application "Finder"
-      if not (exists folder documentName of folder gitRoot)
-        make new folder at gitRoot with properties {name:documentName}
-      end if
-      set the targetFolder to folder documentName of folder gitRoot
-      set the targetFolderHFSPath to targetFolder as string
-    end tell
 
     export front document as slide images to file targetFolderHFSPath with properties {image format: JPEG}
     set jpegs to my getImages(targetFolderHFSPath)
