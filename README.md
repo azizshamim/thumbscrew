@@ -1,5 +1,5 @@
 ##thumbscrew
-A git smudge/clean filter to help work with Keynote files in git.
+A git clean filter to help work with Keynote files in git.
 
 Works by adding thumbnails to a per-presentation directory so that diffs in the Keynote binary are *visible* in some way (*i.e. as diffs of the thumbnails*).
 
@@ -12,7 +12,7 @@ Works by adding thumbnails to a per-presentation directory so that diffs in the 
   clean = thumbscrew-clean %f
 ```
 
-* Make sure that the `thumbscrew-smudge` script is available in `PATH`
+* Make sure that the `thumbscrew-clean` script is available in `PATH`
 
 ### How to use
 
