@@ -7,7 +7,7 @@ A git clean filter to help work with Keynote files in git.
 * [ ] Installer would be nice
 * [ ] `git thumbscrew` command option *a la* [git-lfs](https://github.com/github/git-lfs)
 * [ ] single commit?
-* [ ] License
+* [x] License
 * [ ] CONTRIBUTING.md
 
 ### Installation
