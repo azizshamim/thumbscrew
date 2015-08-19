@@ -1,3 +1,4 @@
 [filter "thumbscrew"]
 	clean = thumbscrew-clean %f
+	smudge = cat
 	required
