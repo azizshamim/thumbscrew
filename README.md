@@ -19,6 +19,7 @@ A git clean filter to help work with Keynote files in git.
 ```
 [filter "thumbscrew"]
   clean = thumbscrew-clean %f
+  smudge = cat
 ```
 
 * Make sure that the `thumbscrew-clean` script is available in `PATH`
