@@ -23,7 +23,6 @@ A git clean filter to help work with Keynote files in git.
 ```
 
 * Make sure that the `thumbscrew-clean` script is available in `PATH`
-* Make sure that environment var `THUMB_PATH` is set to the path of the installed `thumbscrew.scpt` applescript
 
 ### How to use
 
