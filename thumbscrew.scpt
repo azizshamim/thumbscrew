@@ -16,6 +16,7 @@ on run argv
   set documentName to item 2 of argv
   set documentFullName to repoPath & "/" & documentName
 
+  set keynoteFile to (POSIX file documentFullName) as alias
   set documentPath to posix file (POSIX path of (do shell script "dirname " & quoted form of documentFullName)) as alias
 
   tell application "Finder"
@@ -28,7 +29,7 @@ on run argv
 
   tell application "Keynote" to run
   tell application "Keynote"
-    open documentFullName
+    open keynoteFile
 
     if playing is true then stop the front document
 
