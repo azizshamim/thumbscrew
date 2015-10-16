@@ -26,10 +26,11 @@ A git clean filter to help work with Keynote files in git.
 
 ### How to use
 
-Add the Keynote extension to the `.gitattributes` like in the following example:
+Add your file to the `.gitattributes` add the file you want tracked like in the following example:
 
 ```
 *.key    filter=thumbscrew
+Example  filter=thumbscrew
 ```
 
 Use `git add` and `git commit` the way you would regularly do this.
