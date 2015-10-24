@@ -17,13 +17,13 @@ on run argv
 
   set keynoteFile to (POSIX file keynoteName) as alias
   set keynoteFullName to savePath & "/" & keynoteName
-  set documentPath to posix file (POSIX path of (do shell script "dirname " & quoted form of keynoteFullName)) as alias
+  set savePath to posix file savePath
 
   tell application "Finder"
-    if not (exists folder thumbnailDir of folder documentPath)
-      make new folder at folder documentPath with properties {name:thumbnailDir}
+    if not (exists folder thumbnailDir of folder savePath)
+      make new folder at folder savePath with properties {name:thumbnailDir}
     end if
-    set the targetFolder to folder thumbnailDir of folder documentPath
+    set the targetFolder to folder thumbnailDir of folder savePath
     set the targetFolderHFSPath to targetFolder as string
   end tell
 
@@ -49,6 +49,6 @@ on run argv
       end try
     end repeat
 
---    close front document without saving
+    close front document without saving
   end tell
 end run
