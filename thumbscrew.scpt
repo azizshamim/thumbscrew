@@ -10,13 +10,13 @@ on getImages(f)
 end getImages
 
 on run argv
-  set repoPath to item 1 of argv
+  set savePath to item 1 of argv
   set keynoteName to item 2 of argv
   set thumbnailDir to keynoteName
   if thumbnailDir ends with ".key" then set thumbnailDir to text 1 thru -5 of thumbnailDir
 
   set keynoteFile to (POSIX file keynoteName) as alias
-  set keynoteFullName to repoPath & "/" & keynoteName
+  set keynoteFullName to savePath & "/" & keynoteName
   set documentPath to posix file (POSIX path of (do shell script "dirname " & quoted form of keynoteFullName)) as alias
 
   tell application "Finder"

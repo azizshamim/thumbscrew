@@ -4,7 +4,7 @@ NAME=${1}
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-GTL=`git rev-parse --show-toplevel`
+SAVE=$(dirname $(find $(git rev-parse --show-toplevel) -name ${NAME}))
 
-/usr/bin/osascript ${DIR}/thumbscrew.scpt ${GTL} ${NAME} 2>/dev/null
+/usr/bin/osascript ${DIR}/thumbscrew.scpt ${SAVE} ${NAME} 2>/dev/null
 cat -
