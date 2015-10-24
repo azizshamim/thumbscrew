@@ -1,35 +1,35 @@
 -- thumbscrew.scpt
--- usage: thumbscript.scpt <path_to_root_dir> <path_to_keynotePresentation>
+-- usage: thumbscript.scpt <path_to_git_root_dir> <path_to_keynotePresentation>
 --
 -- Will create scaled thumbnails of length `thumbSize` in the directory
--- <path_to_root_dir>/<thumbnailDir>/<presentation>
+-- <path_to_presentation>
 property thumbSize : 480
-property thumbnailDir: "keynotes"
 
 on getImages(f)
   tell application "Finder" to return (files of folder f) as alias list
 end getImages
 
 on run argv
-  set gitRoot to item 1 of argv
-  set tmpFile to item 2 of argv
-  set documentName to item 2 of argv
-  if documentName ends with ".key" then set documentName to text 1 thru -5 of documentName
+  set repoPath to item 1 of argv
+  set keynoteName to item 2 of argv
+  set thumbnailDir to keynoteName
+  if thumbnailDir ends with ".key" then set thumbnailDir to text 1 thru -5 of thumbnailDir
 
-  set gitRoot to posix file (POSIX path of (gitRoot as text) & "/" & thumbnailDir) as alias
-  set tmpFile to (POSIX file tmpFile) as alias
+  set keynoteFile to (POSIX file keynoteName) as alias
+  set keynoteFullName to repoPath & "/" & keynoteName
+  set documentPath to posix file (POSIX path of (do shell script "dirname " & quoted form of keynoteFullName)) as alias
 
   tell application "Finder"
-    if not (exists folder documentName of folder gitRoot)
-      make new folder at gitRoot with properties {name:documentName}
+    if not (exists folder thumbnailDir of folder documentPath)
+      make new folder at folder documentPath with properties {name:thumbnailDir}
     end if
-    set the targetFolder to folder documentName of folder gitRoot
+    set the targetFolder to folder thumbnailDir of folder documentPath
     set the targetFolderHFSPath to targetFolder as string
   end tell
 
   tell application "Keynote" to run
   tell application "Keynote"
-    open tmpFile
+    open keynoteFile
 
     if playing is true then stop the front document
 
@@ -49,6 +49,6 @@ on run argv
       end try
     end repeat
 
-    close front document without saving
+--    close front document without saving
   end tell
 end run
