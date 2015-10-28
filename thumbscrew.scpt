@@ -1,29 +1,29 @@
 -- thumbscrew.scpt
--- usage: thumbscript.scpt <keynotePresentation>
+-- usage: thumbscript.scpt <path_to_git_root_dir> <path_to_keynotePresentation>
 --
 -- Will create scaled thumbnails of length `thumbSize` in the directory
--- <path_to_keynotePresentation>/<thumbnailDir>
+-- <path_to_presentation>
 property thumbSize : 480
-property thumbnailDir: "thumbnail"
-
 
 on getImages(f)
   tell application "Finder" to return (files of folder f) as alias list
 end getImages
 
 on run argv
-  set repoPath to item 1 of argv
-  set documentName to item 2 of argv
-  set documentFullName to repoPath & "/" & documentName
+  set savePath to item 1 of argv
+  set keynoteName to item 2 of argv
+  set thumbnailDir to keynoteName
+  if thumbnailDir ends with ".key" then set thumbnailDir to text 1 thru -5 of thumbnailDir
 
-  set keynoteFile to (POSIX file documentFullName) as alias
-  set documentPath to posix file (POSIX path of (do shell script "dirname " & quoted form of documentFullName)) as alias
+  set keynoteFile to (POSIX file keynoteName) as alias
+  set keynoteFullName to savePath & "/" & keynoteName
+  set savePath to posix file savePath
 
   tell application "Finder"
-    if not (exists folder thumbnailDir of folder documentPath)
-      make new folder at folder documentPath with properties {name:thumbnailDir}
+    if not (exists folder thumbnailDir of folder savePath)
+      make new folder at folder savePath with properties {name:thumbnailDir}
     end if
-    set the targetFolder to folder thumbnailDir of folder documentPath
+    set the targetFolder to folder thumbnailDir of folder savePath
     set the targetFolderHFSPath to targetFolder as string
   end tell
 
@@ -51,5 +51,4 @@ on run argv
 
     close front document without saving
   end tell
-
 end run
